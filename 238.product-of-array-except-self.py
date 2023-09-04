@@ -6,7 +6,7 @@
 
 # @lc code=start
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
         n = len(nums)
         prefix_arr = [nums[0]]
         for i in range(1, n):
