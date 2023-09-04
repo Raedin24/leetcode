@@ -5,37 +5,33 @@
 #
 
 # @lc code=start
-# class Solution:
-#     def productExceptSelf(self, nums: List[int]) -> List[int]:
-#         prefix_arr = [nums[0]]
-#         for i in range(1, len(nums)):
-#             prefix_arr.append(prefix_arr[i-1] * nums[i])
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        prefix_arr = [nums[0]]
+        for i in range(1, n):
+            prefix_arr.append(prefix_arr[i-1] * nums[i])
             
 
-#         suffix_arr = [nums[-1]] * len(nums)
-#         for i in range(1, len(nums)):
-#             suffix_arr.append(suffix_arr[i-1] * nums[len(nums)-i])
+        suffix_arr = []
+        k = 0
+        for i in range(n-1, -1, -1):
+            if i == n - 1:
+                suffix_arr.append(nums[i])
+            else:
+                suffix_arr.append(suffix_arr[k] * nums[i])
+                k += 1
+        suffix_arr.reverse()
+        print(f"Prefix product: {prefix_arr} \nSuffix product: {suffix_arr}")
 
-#         print("Prefix product: " + prefix_arr + '\n' + "Suffix product: " + suffix_arr)
+        res = []
+        for i in range(n):
+            if i == 0:
+                res.append(suffix_arr[i+1])
+            elif i == n-1:
+                res.append(prefix_arr[i-1])
+            else:
+                res.append(prefix_arr[i-1] * suffix_arr[i+1])
+        return res
         
 # @lc code=end
-
-"""
-[1,2,3,4]
-ps = [1,2,6,24]
-ss = [4,12,24,24]
-"""
-def productExceptSelf(nums: list[int]) -> list[int]:
-    prefix_arr = [nums[0]]
-    for i in range(1, len(nums)):
-        prefix_arr.append(prefix_arr[i-1] * nums[i])
-        
-
-    suffix_arr = [nums[-1]]
-    for i in range(1, len(nums)):
-        suffix_arr.append(suffix_arr[i-1] * nums[len(nums)-i+])
-
-    print(f"Prefix product: {prefix_arr} \nSuffix product: {suffix_arr}")
-    return
-
-productExceptSelf([1, 2, 3, 4])
