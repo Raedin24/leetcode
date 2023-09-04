@@ -6,7 +6,7 @@
 
 # @lc code=start
 class Solution:
-    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+    def findThePrefixCommonArray(self, A: list[int], B: list[int]) -> List[int]:
         k = []
         ai = set()
         bi = set()
