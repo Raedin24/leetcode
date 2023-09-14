@@ -6,11 +6,9 @@
 
 # @lc code=start
 class Solution:
-    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        # alpha = {chr(i+97):i for i in range(0, 26)}
+    def nextGreatestLetter(self, letters: list[str], target: str) -> str:
         converted = [ord(k) for k in letters]
         target = ord(target)
-        # print(converted, target)
         low, high = 0, len(converted)-1
         while low <= high:
             mid = low + (high-low)//2
@@ -23,5 +21,6 @@ class Solution:
         return chr(converted[0])      
 # @lc code=end
 
-sol = Solution()
-print(sol.nextGreatestLetter(["c","f","j"], "d"))
+# Test cases
+# sol = Solution()
+# print(sol.nextGreatestLetter(["c","f","j"], "d"))
